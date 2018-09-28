@@ -1,0 +1,23 @@
+{
+  "name": "vuepress-plugin-sitemap",
+  "version": "0.0.1",
+  "description": "Sitemap generator for vuepress.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "Eko Eryanto <ekoeryanto@gmail.com> (https://eryanto.net)",
+  "license": "MIT",
+  "bin": {
+    "vuepress-sitemap": "index.js"
+  },
+  "dependencies": {
+    "arg": "^2.0.0",
+    "esm": "^3.0.84",
+    "sitemap": "^2.0.1"
+  },
+  "peerDependencies": {
+    "vuepress": "^0.14.0"
+  }
+}
