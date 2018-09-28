@@ -20,3 +20,6 @@ Use it in postbuild script
   }
 }
 ```
+
+## Related
+[Server Push Link Generator](https://github.com/ekoeryanto/vuepress-plugin-server-push)
