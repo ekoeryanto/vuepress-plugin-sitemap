@@ -1,25 +1,22 @@
 # vuepress-plugin-sitemap
 
-Sitemap generator for vuepress.
+Sitemap generator plugin for vuepress.
 
 ## Install
 
 ```sh
-npm add vuepress-plugin-sitemap
+npm add vuepress-plugin-sitemap@next
 ```
 
 ## Usage
 
-Use it in postbuild script
-
-```ts
-{
-  scripts: {
-    build: "vuepress build docs -d dist",
-    postbuild: "vuepress-sitemap -h https://yours.net.id -d dist",
+```js
+// .vuepress/config.js
+module.exports = {
+  plugins: {
+    'vuepress-plugin-sitemap': {
+      hostname: 'https://yours.net.id'
+    },
   }
 }
 ```
-
-## Related
-[Server Push Link Generator](https://github.com/ekoeryanto/vuepress-plugin-server-push)
