@@ -36,8 +36,9 @@ if (!args.hostname) {
 const requires = esm(module)
 
 const tempData = resolve('node_modules/vuepress/lib/app/.temp/siteData')
+const nextTempData = resolve('node_modules/@vuepress/core/.temp/internal/siteData')
 
-const { siteData: { pages } } = requires(tempData)
+const { siteData: { pages } } = requires(existsSync(tempData) ? tempData : nextTempData)
 
 const urls = pages.map(i => {
   const lastmodISO = i.lastUpdated ? new Date(i.lastUpdated).toISOString() : undefined
