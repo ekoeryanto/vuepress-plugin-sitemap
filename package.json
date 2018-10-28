@@ -29,13 +29,15 @@
   },
   "homepage": "https://github.com/ekoeryanto/vuepress-plugin-sitemap#readme",
   "dependencies": {
-    "chalk": "^2.4.1",
-    "commander": "^2.19.0",
-    "esm": "^3.0.84",
     "sitemap": "^2.0.1"
   },
   "devDependencies": {
     "conventional-changelog-cli": "^2.0.5",
     "release-it": "^7.6.2"
+  },
+  "peerDependencies": {
+    "chalk": "^2.0.0",
+    "commander": "^2.0.0",
+    "esm": "^3.0.0"
   }
 }
