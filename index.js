@@ -11,7 +11,7 @@ module.exports = (options, context) => {
     hostname,
     outFile = "sitemap.xml",
     changefreq = "daily",
-    cacheTime = 600000,
+    cacheTime = 600,
     urls = [],
     ...others
   } = options;
@@ -44,7 +44,7 @@ module.exports = (options, context) => {
 
       const sitemap = createSitemap({
         hostname: hostname,
-        cacheTime: cacheTime,
+        cacheTime: cacheTime * 1000,
         urls: _urls,
         ...others
       });
