@@ -30,7 +30,6 @@ if (!process.argv.slice(2).length) {
 
 try {
   let tempDir = program.temp || "";
-  console.log(program.temp);
   if (!tempDir) {
     const legacyTempDir = resolve("node_modules/vuepress/lib/app/.temp");
     tempDir = existsSync(legacyTempDir)
