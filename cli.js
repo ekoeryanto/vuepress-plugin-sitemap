@@ -19,7 +19,7 @@ program
   .option("-u, --urls [urls]", "list of urls to be merged", val =>
     val.split(",")
   )
-  .option("-d, --dest <dest>", "vuepress dest dir")
+  .option("-d, --dest [dest]", "vuepress dest dir, defaults to process.cwd", process.cwd())
   .option("-t, --temp [temp]", "vuepress temporary dir")
   .parse(process.argv);
 
