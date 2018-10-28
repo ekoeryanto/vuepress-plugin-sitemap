@@ -3,6 +3,7 @@
 const program = require("commander");
 const chalk = require("chalk");
 const esm = require("esm");
+const { existsSync } = require("fs");
 const { resolve } = require("path");
 const pkg = require("./package.json");
 const make = require(".");
@@ -19,22 +20,27 @@ program
     val.split(",")
   )
   .option("-d, --dest <dest>", "vuepress dest dir")
-  .option(
-    "-t, --temp [temp]",
-    "vuepress temporary dir",
-    "node_modules/vuepress/lib/app/.temp"
-  )
+  .option("-t, --temp [temp]", "vuepress temporary dir")
   .parse(process.argv);
 
 if (!process.argv.slice(2).length) {
   program.outputHelp(chalk.green);
-  process.exit(-1);
+  process.exit();
 }
 
 try {
-  const tempData = resolve(program.temp, 'siteData.js');
+  let tempDir = program.temp;
+
+  if (tempDir) {
+    const legacyTempDir = resolve("node_modules/vuepress/lib/app/.temp");
+    tempDir = existsSync(legacyTempDir)
+      ? legacyTempDir
+      : resolve("node_modules/@vuepress/core/.temp/internal");
+  }
+
+  const siteDataFile = resolve(tempDir, "siteData.js");
   const requires = esm(module);
-  const { siteData } = requires(tempData);
+  const { siteData } = requires(siteDataFile);
 
   make(program, siteData).generated();
 } catch (error) {
