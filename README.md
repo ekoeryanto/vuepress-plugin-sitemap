@@ -81,3 +81,11 @@ urls:
 ```
 
 *Note: Other options of [sitemap](https://npm.im/sitemap) can be used.*
+
+## Todo
+
+* [ ] Localization
+
+## Related Plugins
+
+* [Server Push Links Generator](https://github.com/ekoeryanto/vuepress-plugin-server-push)
