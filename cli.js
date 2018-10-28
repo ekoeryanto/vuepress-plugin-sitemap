@@ -22,7 +22,7 @@ program
   .option(
     "-t, --temp [temp]",
     "vuepress temporary dir",
-    "node_modules/vuepress/lib/app/.temp/siteData"
+    "node_modules/vuepress/lib/app/.temp"
   )
   .parse(process.argv);
 
@@ -32,7 +32,7 @@ if (!process.argv.slice(2).length) {
 }
 
 try {
-  const tempData = resolve(program.temp);
+  const tempData = resolve(program.temp, 'siteData.js');
   const requires = esm(module);
   const { siteData } = requires(tempData);
 
