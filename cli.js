@@ -29,9 +29,9 @@ if (!process.argv.slice(2).length) {
 }
 
 try {
-  let tempDir = program.temp;
-
-  if (tempDir) {
+  let tempDir = program.temp || "";
+  console.log(program.temp);
+  if (!tempDir) {
     const legacyTempDir = resolve("node_modules/vuepress/lib/app/.temp");
     tempDir = existsSync(legacyTempDir)
       ? legacyTempDir
@@ -39,6 +39,11 @@ try {
   }
 
   const siteDataFile = resolve(tempDir, "siteData.js");
+
+  if (!existsSync(siteDataFile)) {
+    throw "Can't find siteData on temp dir, please build first or supply temp dir manually";
+  }
+
   const requires = esm(module);
   const { siteData } = requires(siteDataFile);
 
