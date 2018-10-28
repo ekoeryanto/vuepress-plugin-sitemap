@@ -1,7 +1,10 @@
 const fs = require("fs");
 const path = require("path");
-const { logger } = require("@vuepress/shared-utils");
+const chalk = require("chalk");
 const { createSitemap } = require("sitemap");
+
+const log = (msg, color = "blue") =>
+  console.log(chalk.reset.inverse.bold[color](msg));
 
 module.exports = (options, context) => {
   const {
@@ -16,12 +19,13 @@ module.exports = (options, context) => {
   return {
     generated() {
       if (!hostname) {
-        return logger.warn(
-          `\nNot generating sitemap because required 'hostname' option doesn't exist `
+        return log(
+          `\nNot generating sitemap because required 'hostname' option doesn't exist `,
+          "orange"
         );
       }
 
-      logger.wait("\nGenerating sitemap...");
+      log("\nGenerating sitemap...");
 
       const { pages } = context;
       const _urls = pages
