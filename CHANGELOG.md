@@ -1,3 +1,18 @@
+<a name="2.0.0-alpha.0"></a>
+# [2.0.0-alpha.0](https://github.com/ekoeryanto/vuepress-plugin-sitemap/compare/v1.1.1...v2.0.0-alpha.0) (2018-10-28)
+
+
+### Code Refactoring
+
+* move dependency to `peerDependencies` ([96f8250](https://github.com/ekoeryanto/vuepress-plugin-sitemap/commit/96f8250))
+
+
+### BREAKING CHANGES
+
+* `esm` need to be installed manually for cli usage
+
+
+
 <a name="1.1.1"></a>
 ## [1.1.1](https://github.com/ekoeryanto/vuepress-plugin-sitemap/compare/v1.1.0...v1.1.1) (2018-10-28)
 
