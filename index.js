@@ -3,8 +3,8 @@ const path = require("path");
 const chalk = require("chalk");
 const { createSitemap } = require("sitemap");
 
-const log = (msg, color = "blue") =>
-  console.log(chalk.reset.inverse.bold[color](msg));
+const log = (msg, color = "blue", label = "SITEMAP") =>
+  console.log(`\n${chalk.reset.inverse.bold[color](` ${label} `)} ${msg}`);
 
 module.exports = (options, context) => {
   const {
@@ -20,12 +20,12 @@ module.exports = (options, context) => {
     generated() {
       if (!hostname) {
         return log(
-          `\nNot generating sitemap because required 'hostname' option doesn't exist `,
+          `Not generating sitemap because required 'hostname' option doesn't exist`,
           "orange"
         );
       }
 
-      log("\nGenerating sitemap...");
+      log("Generating sitemap...");
 
       const { pages } = context;
       const _urls = pages
@@ -49,7 +49,7 @@ module.exports = (options, context) => {
         ...others
       });
 
-      const sitemapXML = path.resolve(context.outDir, outFile);
+      const sitemapXML = path.resolve(context.outDir || options.dest, outFile);
 
       fs.writeFileSync(sitemapXML, sitemap.toString());
     }

@@ -3,6 +3,9 @@
   "version": "1.0.0-alpha.0",
   "description": "Sitemap generator plugin for vuepress",
   "main": "index.js",
+  "bin": {
+    "vuepress-sitemap": "./cli.js"
+  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/ekoeryanto/vuepress-plugin-sitemap.git"
@@ -25,10 +28,9 @@
   },
   "homepage": "https://github.com/ekoeryanto/vuepress-plugin-sitemap#readme",
   "dependencies": {
-    "sitemap": "^2.0.1",
-    "@vuepress/shared-utils": "^1.0.0-alpha.1"
-  },
-  "peerDependencies": {
-    "@vuepress/shared-utils": "^1.0.0-alpha.1"
+    "chalk": "^2.4.1",
+    "commander": "^2.19.0",
+    "esm": "^3.0.84",
+    "sitemap": "^2.0.1"
   }
 }
