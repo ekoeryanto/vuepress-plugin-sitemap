@@ -1,3 +1,13 @@
+<a name="1.1.1"></a>
+## [1.1.1](https://github.com/ekoeryanto/vuepress-plugin-sitemap/compare/v1.1.0...v1.1.1) (2018-10-28)
+
+
+### Bug Fixes
+
+* **cli:** temp dir not for siteData file ([6095420](https://github.com/ekoeryanto/vuepress-plugin-sitemap/commit/6095420))
+
+
+
 <a name="1.1.0"></a>
 # [1.1.0](https://github.com/ekoeryanto/vuepress-plugin-sitemap/compare/v1.0.1...v1.1.0) (2018-10-28)
 
