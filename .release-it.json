@@ -1,0 +1,16 @@
+{
+  "src": {
+    "tagName": "v%s",
+    "commitMessage": "chore: release v%s [ci skip]",
+    "tagAnnotation": "Release v%s"
+  },
+  "github": {
+    "release": true,
+    "tokenRef": "GH_TOKEN",
+    "releaseName": "Release v%s"
+  },
+  "increment": "conventional:angular",
+  "beforeChangelogCommand": "conventional-changelog -p angular -i CHANGELOG.md -s",
+  "changelogCommand": "conventional-changelog -p angular",
+  "safeBump": false
+}
