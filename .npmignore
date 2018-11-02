@@ -1,3 +1,5 @@
 .editorconfig
 .release-it.json
 yarn.lock
+.vscode/
+.idea/
