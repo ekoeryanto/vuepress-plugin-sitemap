@@ -85,6 +85,16 @@ module.exports = (options, context) => {
         sitemap.add({ url, ...page });
       });
 
+      urls.forEach(item => {
+        const page = pagesMap.get(item.url)
+        if (page) {
+          sitemap.del(item.url)
+          sitemap.add({...page, ...item})
+        } else {
+          sitemap.add(item)
+        }
+      })
+
       log(`found ${sitemap.urls.length} locations`);
       const sitemapXML = path.resolve(context.outDir || options.dest, outFile);
 
