@@ -16,6 +16,8 @@ Sitemap generator plugin for vuepress.
   npm install vuepress-plugin-sitemap
   ```
 
+> in v2.0.0, dependencies except `sitemap` are moved to peerDependencies so we need to install `esm` module manually (`chalk` and `commander` are already installed by `vuepress`) when we use this plugin with *cli method*.
+
 ## Usage
 
 ### Vuepress v1.x
