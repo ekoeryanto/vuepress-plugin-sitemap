@@ -39,7 +39,7 @@ There's no plugin supported with Vuepress v0.x so we need to run it after the bu
 
    ```sh
    ./node_modules/.bin/vuepress -d "dist"
-   ./node_modules/.bin/vuepress-sitemap -h "https://pake.web.id" -d "dist"
+   ./node_modules/.bin/vuepress-sitemap -H "https://pake.web.id" -d "dist"
    ```
 
 2. NPM Script
@@ -48,7 +48,7 @@ There's no plugin supported with Vuepress v0.x so we need to run it after the bu
    {
      scripts: {
        build: "vuepress build docs -d dist",
-       prebuild: "vuepress-sitemap -h https://pake.web.id -d dist"
+       prebuild: "vuepress-sitemap -H https://pake.web.id -d dist"
      }
    }
    ```
