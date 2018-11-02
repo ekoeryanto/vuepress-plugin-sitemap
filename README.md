@@ -50,7 +50,7 @@ There's no plugin supported with Vuepress v0.x so we need to run it after the bu
    {
      scripts: {
        build: "vuepress build docs -d dist",
-       prebuild: "vuepress-sitemap -H https://pake.web.id -d dist"
+       postbuild: "vuepress-sitemap -H https://pake.web.id -d dist"
      }
    }
    ```
