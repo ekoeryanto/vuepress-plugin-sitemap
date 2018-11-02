@@ -27,7 +27,7 @@ module.exports = (options, context) => {
 
       log('Generating sitemap...');
 
-      const { pages, locales } = context;
+      const { pages, locales } = context.getSiteData ? context.getSiteData() : context;
 
       const localeKeys = locales && Object.keys(locales);
 
