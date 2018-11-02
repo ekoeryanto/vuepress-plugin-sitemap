@@ -1,3 +1,23 @@
+<a name="2.0.0"></a>
+# [2.0.0](https://github.com/ekoeryanto/vuepress-plugin-sitemap/compare/v1.1.1...v2.0.0) (2018-11-02)
+
+
+### Code Refactoring
+
+* move dependency to `peerDependencies` ([8735335](https://github.com/ekoeryanto/vuepress-plugin-sitemap/commit/8735335))
+
+
+### Features
+
+* **cli:** support vuepress@1 generation with cli ([db28223](https://github.com/ekoeryanto/vuepress-plugin-sitemap/commit/db28223)), closes [#2](https://github.com/ekoeryanto/vuepress-plugin-sitemap/issues/2)
+
+
+### BREAKING CHANGES
+
+* `esm` need to be installed manually for cli usage
+
+
+
 <a name="1.1.1"></a>
 
 ## [1.1.1](https://github.com/ekoeryanto/vuepress-plugin-sitemap/compare/v1.1.0...v1.1.1) (2018-10-28)
