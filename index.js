@@ -8,11 +8,13 @@ const log = (msg, color = 'blue', label = 'SITEMAP') =>
 
 module.exports = (options, context) => {
   const {
+    urls = [],
     hostname,
+    cacheTime = 600,
+    xslUrl,
+    xmlNs,
     outFile = 'sitemap.xml',
     changefreq = 'daily',
-    cacheTime = 600,
-    urls = [],
     ...others
   } = options;
 
@@ -27,7 +29,9 @@ module.exports = (options, context) => {
 
       log('Generating sitemap...');
 
-      const { pages, locales } = context.getSiteData ? context.getSiteData() : context;
+      const { pages, locales } = context.getSiteData
+        ? context.getSiteData()
+        : context;
 
       const localeKeys = locales && Object.keys(locales);
 
@@ -37,7 +41,7 @@ module.exports = (options, context) => {
         const lastmodISO = page.lastUpdated
           ? new Date(page.lastUpdated).toISOString()
           : undefined;
-        pagesMap.set(page.path, { changefreq, lastmodISO });
+        pagesMap.set(page.path, { changefreq, lastmodISO, ...others });
       });
 
       if (localeKeys && localeKeys.length > 1) {
@@ -70,17 +74,26 @@ module.exports = (options, context) => {
       }
 
       const sitemap = createSitemap({
-        hostname: hostname,
+        urls,
+        hostname,
         cacheTime: cacheTime * 1000,
-        ...others
+        xmlNs,
+        xslUrl
       });
 
       pagesMap.forEach((page, url) => {
         sitemap.add({ url, ...page });
       });
 
-      // add custom urls
-      urls.forEach(url => sitemap.add(url));
+      urls.forEach(item => {
+        const page = pagesMap.get(item.url)
+        if (page) {
+          sitemap.del(item.url)
+          sitemap.add({...page, ...item})
+        } else {
+          sitemap.add(item)
+        }
+      })
 
       log(`found ${sitemap.urls.length} locations`);
       const sitemapXML = path.resolve(context.outDir || options.dest, outFile);

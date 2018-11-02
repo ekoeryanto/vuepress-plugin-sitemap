@@ -82,11 +82,12 @@ urls:
   ]
 ```
 
-*Note: Other options of [sitemap](https://npm.im/sitemap) can be used.*
+**Note:**
+Other options of [sitemap](https://npm.im/sitemap) can be used, all options passed except `urls`, `hostname`, `cacheTime`, `xslUrl`, `xmlNs` and `outFile` will be passed to `url option`
 
 ## Todo
 
-* [ ] Localization
+* [x] Localization
 
 ## Related Plugins
 
