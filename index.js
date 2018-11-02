@@ -1,10 +1,10 @@
-const fs = require('fs');
-const path = require('path');
-const chalk = require('chalk');
-const { createSitemap } = require('sitemap');
+const fs = require('fs')
+const path = require('path')
+const chalk = require('chalk')
+const { createSitemap } = require('sitemap')
 
 const log = (msg, color = 'blue', label = 'SITEMAP') =>
-  console.log(`\n${chalk.reset.inverse.bold[color](` ${label} `)} ${msg}`);
+  console.log(`\n${chalk.reset.inverse.bold[color](` ${label} `)} ${msg}`)
 
 module.exports = (options, context) => {
   const {
@@ -16,41 +16,41 @@ module.exports = (options, context) => {
     outFile = 'sitemap.xml',
     changefreq = 'daily',
     ...others
-  } = options;
+  } = options
 
   return {
-    generated() {
+    generated () {
       if (!hostname) {
         return log(
           `Not generating sitemap because required 'hostname' option doesn't exist`,
           'orange'
-        );
+        )
       }
 
-      log('Generating sitemap...');
+      log('Generating sitemap...')
 
       const { pages, locales } = context.getSiteData
         ? context.getSiteData()
-        : context;
+        : context
 
-      const localeKeys = locales && Object.keys(locales);
+      const localeKeys = locales && Object.keys(locales)
 
-      const pagesMap = new Map();
+      const pagesMap = new Map()
 
       pages.forEach(page => {
         const lastmodISO = page.lastUpdated
           ? new Date(page.lastUpdated).toISOString()
-          : undefined;
-        pagesMap.set(page.path, { changefreq, lastmodISO, ...others });
-      });
+          : undefined
+        pagesMap.set(page.path, { changefreq, lastmodISO, ...others })
+      })
 
       if (localeKeys && localeKeys.length > 1) {
         localeKeys.filter(x => x !== '/').forEach(locale => {
           pagesMap.forEach((page, url) => {
-            if (!url.startsWith(locale)) return;
+            if (!url.startsWith(locale)) return
 
-            const parentURL = url.replace(locale, '/');
-            const parentPage = pagesMap.get(parentURL);
+            const parentURL = url.replace(locale, '/')
+            const parentPage = pagesMap.get(parentURL)
             if (parentPage) {
               if (!parentPage.links) {
                 parentPage.links = [
@@ -58,19 +58,19 @@ module.exports = (options, context) => {
                     lang: locales['/'].lang,
                     url: parentURL
                   }
-                ];
+                ]
               }
 
               parentPage.links.push({
                 lang: locales[locale].lang,
                 url
-              });
+              })
             }
 
-            pagesMap.set(parentURL, parentPage);
-            pagesMap.delete(url);
-          });
-        });
+            pagesMap.set(parentURL, parentPage)
+            pagesMap.delete(url)
+          })
+        })
       }
 
       const sitemap = createSitemap({
@@ -79,27 +79,27 @@ module.exports = (options, context) => {
         cacheTime: cacheTime * 1000,
         xmlNs,
         xslUrl
-      });
+      })
 
       pagesMap.forEach((page, url) => {
-        sitemap.add({ url, ...page });
-      });
+        sitemap.add({ url, ...page })
+      })
 
       urls.forEach(item => {
         const page = pagesMap.get(item.url)
         if (page) {
           sitemap.del(item.url)
-          sitemap.add({...page, ...item})
+          sitemap.add({ ...page, ...item })
         } else {
           sitemap.add(item)
         }
       })
 
-      log(`found ${sitemap.urls.length} locations`);
-      const sitemapXML = path.resolve(context.outDir || options.dest, outFile);
+      log(`found ${sitemap.urls.length} locations`)
+      const sitemapXML = path.resolve(context.outDir || options.dest, outFile)
 
-      fs.writeFileSync(sitemapXML, sitemap.toString());
-      log(`${sitemap.urls.length} locations have been written.`);
+      fs.writeFileSync(sitemapXML, sitemap.toString())
+      log(`${sitemap.urls.length} locations have been written.`)
     }
-  };
-};
+  }
+}
