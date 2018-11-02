@@ -85,7 +85,7 @@ Other options of [sitemap](https://npm.im/sitemap) can be used, all options pass
 
 ## Todo
 
-* [ ] Localization
+* [x] Localization
 
 ## Related Plugins
 
