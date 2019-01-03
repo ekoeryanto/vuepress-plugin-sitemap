@@ -1,3 +1,13 @@
+<a name="2.1.1"></a>
+## [2.1.1](https://github.com/ekoeryanto/vuepress-plugin-sitemap/compare/v2.1.0...v2.1.1) (2019-01-03)
+
+
+### Bug Fixes
+
+* orange color not supported in every terminal ([#12](https://github.com/ekoeryanto/vuepress-plugin-sitemap/issues/12)) ([7b059be](https://github.com/ekoeryanto/vuepress-plugin-sitemap/commit/7b059be)), closes [#10](https://github.com/ekoeryanto/vuepress-plugin-sitemap/issues/10)
+
+
+
 <a name="2.1.0"></a>
 # [2.1.0](https://github.com/ekoeryanto/vuepress-plugin-sitemap/compare/v2.0.0...v2.1.0) (2018-11-02)
 
