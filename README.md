@@ -35,7 +35,7 @@ module.exports = {
 
 ### Vuepress v0.x
 
-There's no plugin supported with Vuepress v0.x so we need to run it after the build process manually (or with npm `prebuild` script).
+There's no plugin supported with Vuepress v0.x so we need to run it after the build process manually (or with npm `postbuild` script).
 
 1. Manual
 
