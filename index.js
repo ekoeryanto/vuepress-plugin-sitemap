@@ -6,6 +6,11 @@ const { createSitemap } = require('sitemap')
 const log = (msg, color = 'blue', label = 'SITEMAP') =>
   console.log(`\n${chalk.reset.inverse.bold[color](` ${label} `)} ${msg}`)
 
+function stripLocalePrefix (path, localePathPrefixes) {
+  const matchingPrefix = localePathPrefixes.filter(prefix => path.startsWith(prefix)).shift()
+  return { normalizedPath: path.replace(matchingPrefix, '/'), localePrefix: matchingPrefix }
+}
+
 module.exports = (options, context) => {
   const {
     urls = [],
@@ -33,7 +38,14 @@ module.exports = (options, context) => {
         ? context.getSiteData()
         : context
 
-      const localeKeys = locales && Object.keys(locales)
+      // Sort the locale keys in reverse order so that longer locales, such as '/en/', match before the default '/'
+      const localeKeys = (locales && Object.keys(locales).sort().reverse()) || []
+      const localesByNormalizedPagePath = pages.reduce((map, page) => {
+        const { normalizedPath, localePrefix } = stripLocalePrefix(page.path, localeKeys)
+        const prefixesByPath = map.get(normalizedPath) || []
+        prefixesByPath.push(localePrefix)
+        return map.set(normalizedPath, prefixesByPath)
+      }, new Map())
 
       const pagesMap = new Map()
 
@@ -41,37 +53,19 @@ module.exports = (options, context) => {
         const lastmodISO = page.lastUpdated
           ? new Date(page.lastUpdated).toISOString()
           : undefined
-        pagesMap.set(page.path, { changefreq, lastmodISO, ...others })
-      })
-
-      if (localeKeys && localeKeys.length > 1) {
-        localeKeys.filter(x => x !== '/').forEach(locale => {
-          pagesMap.forEach((page, url) => {
-            if (!url.startsWith(locale)) return
-
-            const parentURL = url.replace(locale, '/')
-            const parentPage = pagesMap.get(parentURL)
-            if (parentPage) {
-              if (!parentPage.links) {
-                parentPage.links = [
-                  {
-                    lang: locales['/'].lang,
-                    url: parentURL
-                  }
-                ]
-              }
-
-              parentPage.links.push({
-                lang: locales[locale].lang,
-                url
-              })
+        const { normalizedPath } = stripLocalePrefix(page.path, localeKeys)
+        const relatedLocales = localesByNormalizedPagePath.get(normalizedPath)
+        let links = []
+        if (relatedLocales.length > 1) {
+          links = relatedLocales.map(localePrefix => {
+            return {
+              lang: locales[localePrefix].lang,
+              url: normalizedPath.replace('/', localePrefix)
             }
-
-            pagesMap.set(parentURL, parentPage)
-            pagesMap.delete(url)
           })
-        })
-      }
+        }
+        pagesMap.set(page.path, { changefreq, lastmodISO, links, ...others })
+      })
 
       const sitemap = createSitemap({
         urls,
