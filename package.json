@@ -1,6 +1,6 @@
 {
   "name": "vuepress-plugin-sitemap",
-  "version": "2.1.1",
+  "version": "2.1.2",
   "description": "Sitemap generator plugin for vuepress",
   "main": "index.js",
   "bin": {

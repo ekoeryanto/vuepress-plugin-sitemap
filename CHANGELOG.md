@@ -1,3 +1,13 @@
+<a name="2.1.2"></a>
+## [2.1.2](https://github.com/ekoeryanto/vuepress-plugin-sitemap/compare/v2.1.1...v2.1.2) (2019-03-26)
+
+
+### Bug Fixes
+
+* sitemap entries ([47aaab8](https://github.com/ekoeryanto/vuepress-plugin-sitemap/commit/47aaab8))
+
+
+
 <a name="2.1.1"></a>
 ## [2.1.1](https://github.com/ekoeryanto/vuepress-plugin-sitemap/compare/v2.1.0...v2.1.1) (2019-01-03)
 
