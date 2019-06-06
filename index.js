@@ -20,6 +20,7 @@ module.exports = (options, context) => {
     xmlNs,
     outFile = 'sitemap.xml',
     changefreq = 'daily',
+    exclude = [],
     ...others
   } = options
 
@@ -76,7 +77,7 @@ module.exports = (options, context) => {
       })
 
       pagesMap.forEach((page, url) => {
-        sitemap.add({ url, ...page })
+        if (!exclude.includes(url)) sitemap.add({ url, ...page })
       })
 
       urls.forEach(item => {
