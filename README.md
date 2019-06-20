@@ -26,9 +26,12 @@ Sitemap generator plugin for vuepress.
 // .vuepress/config.js
 module.exports = {
   plugins: {
-    'sitemap': {
-      hostname: 'https://pake.web.id'
-    },
+    [
+      'sitemap',
+      {
+        hostname: 'https://pake.web.id',
+      },
+    ]    
   }
 }
 ```
