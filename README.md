@@ -80,6 +80,13 @@ urls:
   example: [
     { url: '/place', changefreq: 'montly'}
   ]
+
+exclude:
+  type: array
+  required: false
+  default: [],
+  description: pages path to exclude
+  example: ['/404.html']
 ```
 
 **Note:**
