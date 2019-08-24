@@ -20,6 +20,19 @@ Sitemap generator plugin for vuepress.
 
 ## Usage
 
+### Vuepress v2.x
+
+```js
+// .vuepress/config.js
+module.exports = {
+  plugins: 
+    [ 'sitemap', {
+      filename: 'sitemap.xml',
+        hostname: 'https://pake.web.id'
+    }],
+}
+```
+
 ### Vuepress v1.x
 
 ```js
