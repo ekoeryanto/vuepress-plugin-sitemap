@@ -52,12 +52,12 @@ module.exports = (options, context) => {
       const pagesMap = new Map()
 
       pages.forEach(page => {
+        const fmOpts = page.frontmatter.sitemap || {}
         const metaRobots = (page.frontmatter.meta || [])
           .find(meta => meta.name === 'robots')
-
         const excludePage = metaRobots
           ? (metaRobots.content || '').split(/,/).map(x => x.trim()).includes('noindex')
-          : page.frontmatter.sitemap === false
+          : fmOpts.exclude === true
 
         if (excludePage) {
           exclude.push(page.path)
@@ -66,8 +66,10 @@ module.exports = (options, context) => {
         const lastmodISO = page.lastUpdated
           ? dateFormatter(page.lastUpdated)
           : undefined
+
         const { normalizedPath } = stripLocalePrefix(page.path, localeKeys)
         const relatedLocales = localesByNormalizedPagePath.get(normalizedPath)
+
         let links = []
         if (relatedLocales.length > 1) {
           links = relatedLocales.map(localePrefix => {
@@ -77,7 +79,16 @@ module.exports = (options, context) => {
             }
           })
         }
-        pagesMap.set(page.path, { changefreq, lastmodISO, links, ...others })
+
+        pagesMap.set(
+          page.path,
+          {
+            changefreq: fmOpts.changefreq || changefreq,
+            lastmodISO,
+            links,
+            ...others
+          }
+        )
       })
 
       const sitemap = createSitemap({
