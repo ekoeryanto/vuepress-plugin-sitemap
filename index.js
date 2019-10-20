@@ -21,6 +21,7 @@ module.exports = (options, context) => {
     outFile = 'sitemap.xml',
     changefreq = 'daily',
     exclude = [],
+    dateFormatter = (lastUpdated) => new Date(lastUpdated).toISOString(),
     ...others
   } = options
 
@@ -63,7 +64,7 @@ module.exports = (options, context) => {
         }
 
         const lastmodISO = page.lastUpdated
-          ? new Date(page.lastUpdated).toISOString()
+          ? dateFormatter(page.lastUpdated)
           : undefined
         const { normalizedPath } = stripLocalePrefix(page.path, localeKeys)
         const relatedLocales = localesByNormalizedPagePath.get(normalizedPath)
