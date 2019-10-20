@@ -1,3 +1,12 @@
+<a name="2.3.0"></a>
+# [2.3.0](https://github.com/ekoeryanto/vuepress-plugin-sitemap/compare/v2.2.0...v2.3.0) (2019-10-20)
+
+
+### Features
+
+* date formatter ([84fb4f0](https://github.com/ekoeryanto/vuepress-plugin-sitemap/commit/84fb4f0))
+* frontmatter sitemap options ([9b5c958](https://github.com/ekoeryanto/vuepress-plugin-sitemap/commit/9b5c958))
+
 <a name="2.2.0"></a>
 # [2.2.0](https://github.com/ekoeryanto/vuepress-plugin-sitemap/compare/v2.1.2...v2.2.0) (2019-10-20)
 
