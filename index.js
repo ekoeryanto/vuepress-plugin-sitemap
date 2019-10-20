@@ -51,12 +51,17 @@ module.exports = (options, context) => {
       const pagesMap = new Map()
 
       pages.forEach(page => {
-        const metaRobots = (page.frontmatter.meta || []).find(meta => meta.name === "robots")
-        const excludePage = false === page.frontmatter.sitemap ||
-          (metaRobots ? (metaRobots.content || '').split(/,/).includes('noindex') : false)
+        const metaRobots = (page.frontmatter.meta || [])
+          .find(meta => meta.name === 'robots')
+
+        const excludePage = metaRobots
+          ? (metaRobots.content || '').split(/,/).map(x => x.trim()).includes('noindex')
+          : page.frontmatter.sitemap === false
+
         if (excludePage) {
           exclude.push(page.path)
         }
+
         const lastmodISO = page.lastUpdated
           ? new Date(page.lastUpdated).toISOString()
           : undefined
