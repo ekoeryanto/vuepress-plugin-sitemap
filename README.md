@@ -87,14 +87,31 @@ exclude:
   default: [],
   description: pages path to exclude
   example: ['/404.html']
+
+dateFormatter:
+  type: function
+  required: false
+  description: change the date format
+  default: time => new Date(time).toISOString()
+```
+
+## Frontmatter Options
+To override global option for a specific page, we can use `sitemap` key on the frontmatter,
+currently we just have 2 options, they are `exclude` and `changefreq`.
+
+### Example
+
+```yml
+---
+sitemap:
+  exclude: false
+  changefreq: hourly
+---
+# Content Updated Frequently
 ```
 
 **Note:**
-Other options of [sitemap](https://npm.im/sitemap) can be used, all options passed except `urls`, `hostname`, `cacheTime`, `xslUrl`, `xmlNs` and `outFile` will be passed to `url option`
-
-## Todo
-
-* [x] Localization
+Other options of [sitemap](https://npm.im/sitemap) can be used, all options passed except `urls`, `hostname`, `cacheTime`, `xslUrl`, `xmlNs` and `outFile` will be passed to `sitemap.createSitemap` constructor.
 
 ## Related Plugins
 
