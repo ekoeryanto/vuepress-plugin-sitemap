@@ -28,7 +28,7 @@ module.exports = (options, context) => {
     generated () {
       if (!hostname) {
         return log(
-          `Not generating sitemap because required 'hostname' option doesn't exist`,
+          'Not generating sitemap because required "hostname" option doesn\'t exist',
           'red'
         )
       }

@@ -29,21 +29,21 @@
   },
   "homepage": "https://github.com/ekoeryanto/vuepress-plugin-sitemap#readme",
   "dependencies": {
-    "sitemap": "^2.0.1"
+    "sitemap": "^3.0.0"
   },
   "devDependencies": {
-    "@commitlint/cli": "^7.2.1",
-    "@commitlint/config-conventional": "^7.1.2",
-    "conventional-changelog-cli": "^2.0.5",
-    "eslint": "^5.8.0",
-    "eslint-config-standard": "^12.0.0",
-    "eslint-plugin-import": "^2.14.0",
-    "eslint-plugin-node": "^8.0.0",
-    "eslint-plugin-promise": "^4.0.1",
-    "eslint-plugin-standard": "^4.0.0",
-    "husky": "^1.1.3",
-    "lint-staged": "^8.0.4",
-    "release-it": "^7.6.2"
+    "@commitlint/cli": "^8.2.0",
+    "@commitlint/config-conventional": "^8.2.0",
+    "conventional-changelog-cli": "^2.0.25",
+    "eslint": "^6.5.1",
+    "eslint-config-standard": "^14.1.0",
+    "eslint-plugin-import": "^2.18.2",
+    "eslint-plugin-node": "^10.0.0",
+    "eslint-plugin-promise": "^4.2.1",
+    "eslint-plugin-standard": "^4.0.1",
+    "husky": "^3.0.9",
+    "lint-staged": "^9.4.2",
+    "release-it": "^12.4.3"
   },
   "peerDependencies": {
     "chalk": "^2.0.0",
