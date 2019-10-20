@@ -34,6 +34,7 @@
   "devDependencies": {
     "@commitlint/cli": "^8.2.0",
     "@commitlint/config-conventional": "^8.2.0",
+    "@release-it/conventional-changelog": "^1.1.0",
     "conventional-changelog-cli": "^2.0.25",
     "eslint": "^6.5.1",
     "eslint-config-standard": "^14.1.0",

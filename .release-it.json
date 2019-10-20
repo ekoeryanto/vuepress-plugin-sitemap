@@ -1,5 +1,5 @@
 {
-  "src": {
+  "git": {
     "tagName": "v%s",
     "commitMessage": "chore: release v%s [ci skip]",
     "tagAnnotation": "Release v%s"
@@ -9,8 +9,11 @@
     "tokenRef": "GH_TOKEN",
     "releaseName": "Release v%s"
   },
-  "increment": "conventional:angular",
-  "beforeChangelogCommand": "conventional-changelog -p angular -i CHANGELOG.md -s",
-  "changelogCommand": "conventional-changelog -p angular",
-  "safeBump": false
+  "safeBump": false,
+  "plugins": {
+    "@release-it/conventional-changelog": {
+      "preset": "angular",
+      "infile": "CHANGELOG.md"
+    }
+  }
 }
