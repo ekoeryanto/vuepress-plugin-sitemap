@@ -1,3 +1,11 @@
+<a name="2.2.0"></a>
+# [2.2.0](https://github.com/ekoeryanto/vuepress-plugin-sitemap/compare/v2.1.2...v2.2.0) (2019-10-20)
+
+
+### Features
+
+* **options:** add option of "exclude" ([4506ab7](https://github.com/ekoeryanto/vuepress-plugin-sitemap/commit/4506ab7))
+
 <a name="2.1.2"></a>
 ## [2.1.2](https://github.com/ekoeryanto/vuepress-plugin-sitemap/compare/v2.1.1...v2.1.2) (2019-03-26)
 
