@@ -116,3 +116,6 @@ Other options of [sitemap](https://npm.im/sitemap) can be used, all options pass
 ## Related Plugins
 
 * [Server Push Links Generator](https://github.com/ekoeryanto/vuepress-plugin-server-push)
+
+## Credits
+* [JetBrains s.r.o](https://www.jetbrains.com/?from=vuepress-plugin-sitemap)
