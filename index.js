@@ -40,6 +40,8 @@ module.exports = (options, context) => {
         ? context.getSiteData()
         : context
 
+      const withBase = url => base.replace(/\/$/, '') + url
+
       // Sort the locale keys in reverse order so that longer locales, such as '/en/', match before the default '/'
       const localeKeys = (locales && Object.keys(locales).sort().reverse()) || []
       const localesByNormalizedPagePath = pages.reduce((map, page) => {
@@ -75,7 +77,7 @@ module.exports = (options, context) => {
           links = relatedLocales.map(localePrefix => {
             return {
               lang: locales[localePrefix].lang,
-              url: normalizedPath.replace('/', localePrefix)
+              url: withBase(normalizedPath.replace('/', localePrefix))
             }
           })
         }
@@ -98,8 +100,6 @@ module.exports = (options, context) => {
         xmlNs,
         xslUrl
       })
-
-      const withBase = url => base.replace(/\/$/, '') + url
 
       pagesMap.forEach((page, url) => {
         if (!exclude.includes(url)) {
