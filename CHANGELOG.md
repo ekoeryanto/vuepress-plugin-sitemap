@@ -1,3 +1,12 @@
+<a name="2.3.1"></a>
+## [2.3.1](https://github.com/ekoeryanto/vuepress-plugin-sitemap/compare/v2.3.0...v2.3.1) (2019-11-08)
+
+
+### Bug Fixes
+
+* base config ignored ([f3648c3](https://github.com/ekoeryanto/vuepress-plugin-sitemap/commit/f3648c3)), closes [#26](https://github.com/ekoeryanto/vuepress-plugin-sitemap/issues/26)
+* wrong temp dir path ([5352720](https://github.com/ekoeryanto/vuepress-plugin-sitemap/commit/5352720))
+
 <a name="2.3.0"></a>
 # [2.3.0](https://github.com/ekoeryanto/vuepress-plugin-sitemap/compare/v2.2.0...v2.3.0) (2019-10-20)
 
