@@ -36,7 +36,7 @@ module.exports = (options, context) => {
 
       log('Generating sitemap...')
 
-      const { pages, locales } = context.getSiteData
+      const { pages, locales, base } = context.getSiteData
         ? context.getSiteData()
         : context
 
@@ -99,8 +99,15 @@ module.exports = (options, context) => {
         xslUrl
       })
 
+      const withBase = url => base.replace(/\/$/, '') + url
+
       pagesMap.forEach((page, url) => {
-        if (!exclude.includes(url)) sitemap.add({ url, ...page })
+        if (!exclude.includes(url)) {
+          sitemap.add({
+            url: withBase(url),
+            ...page
+          })
+        }
       })
 
       urls.forEach(item => {
