@@ -36,9 +36,11 @@ module.exports = (options, context) => {
 
       log('Generating sitemap...')
 
-      const { pages, locales } = context.getSiteData
+      const { pages, locales, base } = context.getSiteData
         ? context.getSiteData()
         : context
+
+      const withBase = url => base.replace(/\/$/, '') + url
 
       // Sort the locale keys in reverse order so that longer locales, such as '/en/', match before the default '/'
       const localeKeys = (locales && Object.keys(locales).sort().reverse()) || []
@@ -75,7 +77,7 @@ module.exports = (options, context) => {
           links = relatedLocales.map(localePrefix => {
             return {
               lang: locales[localePrefix].lang,
-              url: normalizedPath.replace('/', localePrefix)
+              url: withBase(normalizedPath.replace('/', localePrefix))
             }
           })
         }
@@ -100,7 +102,12 @@ module.exports = (options, context) => {
       })
 
       pagesMap.forEach((page, url) => {
-        if (!exclude.includes(url)) sitemap.add({ url, ...page })
+        if (!exclude.includes(url)) {
+          sitemap.add({
+            url: withBase(url),
+            ...page
+          })
+        }
       })
 
       urls.forEach(item => {
