@@ -35,6 +35,9 @@ try {
     tempDir = existsSync(legacyTempDir)
       ? legacyTempDir
       : resolve('node_modules/@vuepress/core/.temp/internal')
+  } else {
+    const stableDir = resolve(tempDir, 'internal')
+    tempDir = existsSync(stableDir) ? stableDir : resolve(tempDir)
   }
 
   const siteDataFile = resolve(tempDir, 'siteData.js')
