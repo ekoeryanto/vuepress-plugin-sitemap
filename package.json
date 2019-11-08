@@ -10,9 +10,6 @@
     "type": "git",
     "url": "git+https://github.com/ekoeryanto/vuepress-plugin-sitemap.git"
   },
-  "publishConfig": {
-    "registry": "https://npm.pkg.github.com/"
-  },
   "scripts": {
     "release": "release-it",
     "test": "echo \"Error: no test specified\" && exit 1"
