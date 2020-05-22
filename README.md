@@ -2,6 +2,7 @@
 
 Sitemap generator plugin for vuepress.
 
+
 ## Install
 
 * Yarn
@@ -17,6 +18,7 @@ Sitemap generator plugin for vuepress.
   ```
 
 > in v2.0.0, dependencies except `sitemap` are moved to peerDependencies so we need to install `esm` module manually (`chalk` and `commander` are already installed by `vuepress`) when we use this plugin with *cli method*.
+
 
 ## Usage
 
@@ -55,6 +57,7 @@ There's no plugin supported with Vuepress v0.x so we need to run it after the bu
    }
    ```
 
+
 ## Options
 
 ```yml
@@ -78,7 +81,7 @@ urls:
   default: [],
   description: custom urls to append
   example: [
-    { url: '/place', changefreq: 'montly'}
+    { url: '/place', changefreq: 'monthly' }
   ]
 
 exclude:
@@ -95,9 +98,12 @@ dateFormatter:
   default: time => new Date(time).toISOString()
 ```
 
+
 ## Frontmatter Options
+
 To override global option for a specific page, we can use `sitemap` key on the frontmatter,
 currently we just have 2 options, they are `exclude` and `changefreq`.
+
 
 ### Example
 
@@ -113,9 +119,11 @@ sitemap:
 **Note:**
 Other options of [sitemap](https://npm.im/sitemap) can be used, all options passed except `urls`, `hostname`, `cacheTime`, `xslUrl`, `xmlNs` and `outFile` will be passed to `sitemap.createSitemap` constructor.
 
+
 ## Related Plugins
 
 * [Server Push Links Generator](https://github.com/ekoeryanto/vuepress-plugin-server-push)
+
 
 ## Credits
 * [JetBrains s.r.o](https://www.jetbrains.com/?from=vuepress-plugin-sitemap)
