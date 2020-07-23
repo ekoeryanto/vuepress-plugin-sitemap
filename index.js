@@ -21,7 +21,14 @@ module.exports = (options, context) => {
     outFile = 'sitemap.xml',
     changefreq = 'daily',
     exclude = [],
-    dateFormatter = (lastUpdated) => new Date(lastUpdated).toISOString(),
+    dateFormatter = (lastUpdated) => {
+      try {
+        new Date(lastUpdated).toISOString()
+      } catch (ex) {
+        // convert error,use today's date
+        return new Date().toISOString();
+      }
+    },
     ...others
   } = options
 
