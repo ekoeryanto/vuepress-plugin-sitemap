@@ -23,7 +23,7 @@ module.exports = (options, context) => {
     exclude = [],
     dateFormatter = (lastUpdated) => {
       try {
-        new Date(lastUpdated).toISOString()
+        return new Date(lastUpdated).toISOString()
       } catch (ex) {
         // convert error,use today's date
         return new Date().toISOString();
