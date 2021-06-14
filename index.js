@@ -20,6 +20,7 @@ module.exports = (options, context) => {
     xmlNs,
     outFile = 'sitemap.xml',
     changefreq = 'daily',
+    priority = undefined,
     exclude = [],
     dateFormatter = (lastUpdated) => new Date(lastUpdated).toISOString(),
     ...others
@@ -86,6 +87,7 @@ module.exports = (options, context) => {
           page.path,
           {
             changefreq: fmOpts.changefreq || changefreq,
+            priority: fmOpts.priority || priority,
             lastmodISO,
             links,
             ...others
