@@ -27,6 +27,9 @@ module.exports = (options, context) => {
 
   return {
     generated () {
+      // to exclude 404 page explicitly by default
+      exclude.push('/404.html')
+
       if (!hostname) {
         return log(
           'Not generating sitemap because required "hostname" option doesn\'t exist',
