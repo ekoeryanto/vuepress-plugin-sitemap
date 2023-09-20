@@ -74,7 +74,7 @@ module.exports = (options, context) => {
 
         let links = []
         if (relatedLocales.length > 1) {
-          links = relatedLocales.map(localePrefix => {
+          links = relatedLocales.filter(localePrefix => localePrefix != null).map(localePrefix => {
             return {
               lang: locales[localePrefix].lang,
               url: withBase(normalizedPath.replace('/', localePrefix))
